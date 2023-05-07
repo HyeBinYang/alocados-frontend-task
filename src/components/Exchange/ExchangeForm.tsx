@@ -37,6 +37,11 @@ const ExchangeButton = styled.button`
   font-weight: 600;
   color: ${color.White};
   cursor: pointer;
+
+  &:disabled {
+    background-color: ${color.Light.Shade[200]};
+    color: ${color.Light.Shade[400]};
+  }
 `;
 
 const ExchangeForm = () => {
@@ -45,8 +50,8 @@ const ExchangeForm = () => {
   const dispatch = useAppDispatch();
 
   const isDisabled = useMemo(() => {
-    // exchangeInput.from
-  }, []);
+    return !exchangeInput.from.value || !exchangeInput.to.value;
+  }, [exchangeInput]);
 
   const handleExchangeClick = () => {
     dispatch(
@@ -71,7 +76,9 @@ const ExchangeForm = () => {
         <Swap />
         <ExchangeInput innerLabel="전환 수량 (TO)" name="to" />
       </ExchangeGroup>
-      <ExchangeButton onClick={handleExchangeClick}>환전</ExchangeButton>
+      <ExchangeButton onClick={handleExchangeClick} disabled={isDisabled}>
+        환전
+      </ExchangeButton>
       {history.length > 0 && <HistoryItem {...history[0]} />}
     </Wrapper>
   );
