@@ -4,7 +4,7 @@ import ExchangeSummary from "../../components/Exchange/ExchangeSummary";
 import ExchangeForm from "../../components/Exchange/ExchangeForm";
 
 const Wrapper = styled.main`
-  max-width: 600px;
+  max-width: 1000px;
   margin: 120px auto 0;
 `;
 

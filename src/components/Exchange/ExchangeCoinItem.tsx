@@ -43,7 +43,7 @@ const BalanceText = styled.p`
 `;
 
 interface ExchangeCoinItemProps {
-  coin: keyof typeof coins;
+  coin: Coin;
 }
 
 const ExchangeCoinItem: React.FC<ExchangeCoinItemProps> = ({ coin }) => {
@@ -58,7 +58,7 @@ const ExchangeCoinItem: React.FC<ExchangeCoinItemProps> = ({ coin }) => {
         <CoinText>{coin}</CoinText>
       </CoinInfoGroup>
       <BalanceText>
-        {balance[coin.toLocaleLowerCase() as Coin]} {coins[coin]["unit"]}
+        {balance[coin]} {coins[coin]["unit"]}
       </BalanceText>
     </Wrapper>
   );

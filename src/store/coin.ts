@@ -1,6 +1,6 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
-export type Coin = "solana" | "ethereum" | "bnb";
+export type Coin = "Solana" | "Ethereum" | "BnB";
 type CoinMap = {
   [key in Coin]: {
     [key in Coin]?: (value: number) => number;
@@ -8,27 +8,27 @@ type CoinMap = {
 };
 
 const coinMap: CoinMap = {
-  solana: {
-    ethereum(value: number) {
+  Solana: {
+    Ethereum(value: number) {
       return value / 100;
     },
-    bnb(value: number) {
+    BnB(value: number) {
       return value / 2;
     },
   },
-  ethereum: {
-    solana(value: number) {
+  Ethereum: {
+    Solana(value: number) {
       return value * 100;
     },
-    bnb(value: number) {
+    BnB(value: number) {
       return value * 50;
     },
   },
-  bnb: {
-    solana(value: number) {
+  BnB: {
+    Solana(value: number) {
       return value * 2;
     },
-    ethereum(value: number) {
+    Ethereum(value: number) {
       return value / 50;
     },
   },
@@ -38,9 +38,9 @@ const coin = createSlice({
   name: "coin",
   initialState: {
     balance: {
-      solana: 0,
-      ethereum: 2000,
-      bnb: 0,
+      Solana: 0,
+      Ethereum: 2000,
+      BnB: 0,
     },
   },
   reducers: {
