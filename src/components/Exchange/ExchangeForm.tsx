@@ -6,7 +6,7 @@ import color from "../../const/color";
 import ExchangeInput from "./ExchangeInput";
 import { useAppSelector } from "../../hooks/useAppSelector";
 import useAppDispatch from "../../hooks/useAppDispatch";
-import { addHistory } from "../../store/exchange";
+import { addHistory, setIsFinish } from "../../store/exchange";
 import { exchangeCoin } from "../../store/coin";
 
 const Wrapper = styled.div`
@@ -67,6 +67,7 @@ const ExchangeForm = () => {
         value: Number(exchangeInput.from.value),
       })
     );
+    dispatch(setIsFinish(true));
   };
 
   return (

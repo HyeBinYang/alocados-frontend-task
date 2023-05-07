@@ -19,6 +19,7 @@ export interface ExchangeInfo {
 interface ExchangeState {
   history: ExchangeInfo[];
   input: ExchangeInfo;
+  isFinish: boolean;
 }
 
 const initialState: ExchangeState = {
@@ -33,6 +34,7 @@ const initialState: ExchangeState = {
       value: "",
     },
   },
+  isFinish: false,
 };
 
 const exchange = createSlice({
@@ -63,8 +65,11 @@ const exchange = createSlice({
       const { name, value } = payload;
       state.input[name]["name"] = value;
     },
+    setIsFinish(state: ExchangeState, action: PayloadAction<boolean>) {
+      state.isFinish = action.payload;
+    },
   },
 });
 
-export const { addHistory, reverseHistory, setInputValue, setInputCoinName } = exchange.actions;
+export const { addHistory, reverseHistory, setInputValue, setInputCoinName, setIsFinish } = exchange.actions;
 export default exchange.reducer;
