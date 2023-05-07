@@ -58,7 +58,7 @@ const ExchangeCoinItem: React.FC<ExchangeCoinItemProps> = ({ coin }) => {
         <CoinText>{coin}</CoinText>
       </CoinInfoGroup>
       <BalanceText>
-        {balance[coin]} {coins[coin]["unit"]}
+        {balance[coin].toLocaleString()} {coins[coin]["unit"]}
       </BalanceText>
     </Wrapper>
   );

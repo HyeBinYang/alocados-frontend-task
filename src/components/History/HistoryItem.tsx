@@ -27,11 +27,11 @@ const HistoryItem: FC<ExchangeInfo> = ({ ...exchange }) => {
     <Wrapper>
       <p>{format(exchange.date as number, "yyyy-MM-dd, a hh:mm")}</p>
       <HistoryContent>
-        <CoinExchangeText coin={exchange.from.name} value={String(exchange.from.value)} />
+        <CoinExchangeText coin={exchange.from.name} value={exchange.from.value.toLocaleString()} />
         <div>
           <ChevonRight />
         </div>
-        <CoinExchangeText coin={exchange.to.name} value={String(exchange.to.value)} />
+        <CoinExchangeText coin={exchange.to.name} value={exchange.to.value.toLocaleString()} />
       </HistoryContent>
     </Wrapper>
   );

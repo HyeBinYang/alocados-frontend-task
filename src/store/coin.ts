@@ -48,7 +48,7 @@ const coin = createSlice({
       const { payload } = action;
       const { from, to, value } = payload;
       state.balance[from] -= value;
-      state.balance[to] = coinMap[from][to]?.(value) as number;
+      state.balance[to] += coinMap[from][to]?.(value) as number;
     },
   },
 });
