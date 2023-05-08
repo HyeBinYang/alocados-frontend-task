@@ -2,6 +2,7 @@ import React, { FC } from "react";
 import coins from "../../const/coin";
 import styled from "styled-components";
 import color from "../../const/color";
+import Text from "./Text";
 
 const Wrapper = styled.div`
   display: flex;
@@ -16,13 +17,6 @@ const CoinExchangeTextImageBox = styled.div`
   }
 `;
 
-const CoinExchangeTextContent = styled.p`
-  font-size: 18px;
-  font-weight: 600;
-  line-height: 32px;
-  color: ${color.Light.Shade[700]};
-`;
-
 interface CoinExchangeTextProps {
   coin: keyof typeof coins;
   value: string;
@@ -34,9 +28,9 @@ const CoinExchangeText: FC<CoinExchangeTextProps> = ({ coin, value }) => {
       <CoinExchangeTextImageBox>
         <img src={coins[coin]["icon"]} alt="" />
       </CoinExchangeTextImageBox>
-      <CoinExchangeTextContent>
+      <Text element="p" font="Body2Bold" color={color.Light.Shade[700]}>
         {value} {coins[coin]["unit"]}
-      </CoinExchangeTextContent>
+      </Text>
     </Wrapper>
   );
 };

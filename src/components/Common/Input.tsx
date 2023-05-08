@@ -1,6 +1,8 @@
 import React, { FC, InputHTMLAttributes } from "react";
 import styled from "styled-components";
 import color from "../../const/color";
+import Text from "./Text";
+import typography from "../../const/typography";
 
 const Wrapper = styled.div<{ error?: boolean }>`
   padding: 10px 16px;
@@ -11,21 +13,13 @@ const Wrapper = styled.div<{ error?: boolean }>`
   border-radius: 12px;
 `;
 
-const InnerLabel = styled.label`
-  font-size: 12px;
-  font-weight: 600;
-  line-height: 12px;
-  color: ${color.Light.Shade[600]};
-`;
-
 const InputText = styled.input`
   height: 16px;
   padding: 4px 0;
   background-color: transparent;
   border: none;
   outline: none;
-  font-size: 16px;
-  font-weight: 600;
+  ${typography.Body2Bold};
 `;
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
@@ -36,7 +30,11 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
 const Input: FC<InputProps> = ({ innerLabel, error, ...inputAttrs }) => {
   return (
     <Wrapper error={error}>
-      {innerLabel && <InnerLabel>{innerLabel}</InnerLabel>}
+      {innerLabel && (
+        <Text element="label" font="MobileOverline" color={color.Light.Shade[600]}>
+          {innerLabel}
+        </Text>
+      )}
       <InputText type="text" {...inputAttrs} />
     </Wrapper>
   );

@@ -6,6 +6,7 @@ import Alert from "../../components/Common/Alert";
 import { useAppSelector } from "../../hooks/useAppSelector";
 import useAppDispatch from "../../hooks/useAppDispatch";
 import { setIsFinish } from "../../store/exchange";
+import typography from "../../const/typography";
 
 const Wrapper = styled.main`
   max-width: 1000px;
@@ -13,9 +14,7 @@ const Wrapper = styled.main`
 `;
 
 const PageTitle = styled.h1`
-  font-size: 22px;
-  font-weight: 700;
-  line-height: 32px;
+  ${typography["Title 1"]};
   margin-bottom: 24px;
 `;
 

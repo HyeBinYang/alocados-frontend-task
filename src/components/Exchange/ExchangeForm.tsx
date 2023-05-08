@@ -8,6 +8,7 @@ import { useAppSelector } from "../../hooks/useAppSelector";
 import useAppDispatch from "../../hooks/useAppDispatch";
 import { addHistory, setIsFinish } from "../../store/exchange";
 import { exchangeCoin } from "../../store/coin";
+import typography from "../../const/typography";
 
 const Wrapper = styled.div`
   flex: 1;
@@ -33,10 +34,10 @@ const ExchangeButton = styled.button`
   background-color: ${color.Light.Primary[100]};
   border: none;
   border-radius: 12px;
-  font-size: 15px;
-  font-weight: 600;
   color: ${color.White};
   cursor: pointer;
+
+  ${typography.ButtonBase};
 
   &:disabled {
     background-color: ${color.Light.Shade[200]};

@@ -5,6 +5,7 @@ import styled from "styled-components";
 import color from "../../const/color";
 import { ExchangeInfo } from "../../store/exchange";
 import { format } from "date-fns";
+import Text from "../Common/Text";
 
 const Wrapper = styled.div`
   height: 35px;
@@ -25,7 +26,9 @@ const HistoryContent = styled.div`
 const HistoryItem: FC<ExchangeInfo> = ({ ...exchange }) => {
   return (
     <Wrapper>
-      <p>{format(exchange.date as number, "yyyy-MM-dd, a hh:mm")}</p>
+      <Text element="p" font="Caption-1" color={color.Light.Shade[900]}>
+        {format(exchange.date as number, "yyyy-MM-dd, a hh:mm")}
+      </Text>
       <HistoryContent>
         <CoinExchangeText coin={exchange.from.name} value={exchange.from.value.toLocaleString()} />
         <div>

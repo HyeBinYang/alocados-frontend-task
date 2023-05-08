@@ -65,11 +65,14 @@ const exchange = createSlice({
       const { name, value } = payload;
       state.input[name]["name"] = value;
     },
+    resetInput(state: ExchangeState) {
+      state.input = initialState.input;
+    },
     setIsFinish(state: ExchangeState, action: PayloadAction<boolean>) {
       state.isFinish = action.payload;
     },
   },
 });
 
-export const { addHistory, reverseHistory, setInputValue, setInputCoinName, setIsFinish } = exchange.actions;
+export const { addHistory, reverseHistory, setInputValue, setInputCoinName, resetInput, setIsFinish } = exchange.actions;
 export default exchange.reducer;
