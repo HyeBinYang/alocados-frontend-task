@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import ChevonRight from "../Common/Icon/ChevonRight";
+import ChevronRight from "../Common/Icon/ChevronRight";
 import CoinExchangeText from "../Common/CoinExchangeText";
 import styled from "styled-components";
 import color from "../../const/color";
@@ -32,7 +32,7 @@ const HistoryItem: FC<ExchangeInfo> = ({ ...exchange }) => {
       <HistoryContent>
         <CoinExchangeText coin={exchange.from.name} value={exchange.from.value.toLocaleString()} />
         <div>
-          <ChevonRight />
+          <ChevronRight width="16" height="16" color={color.Light.Shade[700]} />
         </div>
         <CoinExchangeText coin={exchange.to.name} value={exchange.to.value.toLocaleString()} />
       </HistoryContent>

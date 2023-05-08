@@ -39,7 +39,7 @@ const Header = () => {
 
   return (
     <Wrapper>
-      <Logo />
+      <Logo width="168" height="40" />
       <LinkGroup>
         <LinkItem active={getIsLinkedPage("/exchange")}>
           <Link to={"/exchange"}>

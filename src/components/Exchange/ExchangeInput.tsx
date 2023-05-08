@@ -1,9 +1,9 @@
-import React, { ChangeEvent, useCallback, useEffect, useMemo } from "react";
+import React, { ChangeEvent, useCallback, useMemo } from "react";
 import styled from "styled-components";
 import Input from "../Common/Input";
 import Dropdown from "../Common/Dropdown";
 import coins from "../../const/coin";
-import ChevonDown from "../Common/Icon/ChevonDown";
+import ChevronDown from "../Common/Icon/ChevronDown";
 import Text from "../Common/Text";
 import color from "../../const/color";
 import useAppDispatch from "../../hooks/useAppDispatch";
@@ -113,7 +113,7 @@ const ExchangeInput: React.FC<ExchangeInputProps> = ({ innerLabel, name }) => {
               </Text>
             </CoinOptionBox>
             <div>
-              <ChevonDown />
+              <ChevronDown width="24" height="24" color={color.Light.Shade[700]} />
             </div>
           </CurrentSelectedBox>
         </Dropdown.Trigger>

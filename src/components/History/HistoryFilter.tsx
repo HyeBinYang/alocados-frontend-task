@@ -37,7 +37,7 @@ const HistoryFilter = () => {
         <Text element="p" font="Poppins" color={color.Light.Shade[900]}>
           환전 시간
         </Text>
-        <ArrowDown />
+        <ArrowDown width="16" height="17" color={color.Light.Shade[700]} />
       </SortButtonGroup>
       <Text element="p" font="Caption-1" color={color.Light.Shade[900]}>
         환전금액

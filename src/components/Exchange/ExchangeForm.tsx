@@ -78,7 +78,7 @@ const ExchangeForm = () => {
     <Wrapper>
       <ExchangeGroup>
         <ExchangeInput innerLabel="전환 수량 (FROM)" name="from" />
-        <Swap />
+        <Swap width="40" height="40" color={color.Light.Shade[700]} />
         <ExchangeInput innerLabel="전환 수량 (TO)" name="to" />
       </ExchangeGroup>
       <ExchangeButton onClick={handleExchangeClick} disabled={isDisabled}>

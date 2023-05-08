@@ -46,7 +46,7 @@ const Alert: FC<AlertProps> = ({ type, content, onClose }) => {
   const alertIcon = useMemo(() => {
     switch (type) {
       case "alert":
-        return <Info />;
+        return <Info width="20" height="20" color={color.Light.Info.Font} />;
     }
   }, [type]);
 
@@ -59,7 +59,7 @@ const Alert: FC<AlertProps> = ({ type, content, onClose }) => {
         </Text>
       </AlertContentBox>
       <AlertCloseButton onClick={onClose}>
-        <Close />
+        <Close width="24" height="24" color={color.Light.Info.Font} />
       </AlertCloseButton>
     </Wrapper>
   );
