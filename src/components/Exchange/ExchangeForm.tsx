@@ -6,7 +6,7 @@ import color from "../../const/color";
 import ExchangeInput from "./ExchangeInput";
 import { useAppSelector } from "../../hooks/useAppSelector";
 import useAppDispatch from "../../hooks/useAppDispatch";
-import { addHistory, setIsFinish } from "../../store/exchange";
+import { addHistory, resetInput, setIsFinish } from "../../store/exchange";
 import { exchangeCoin } from "../../store/coin";
 import typography from "../../const/typography";
 
@@ -69,6 +69,7 @@ const ExchangeForm = () => {
       })
     );
     dispatch(setIsFinish(true));
+    dispatch(resetInput());
   };
 
   return (
