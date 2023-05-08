@@ -5,6 +5,7 @@ import color from "../../const/color";
 import { useAppSelector } from "../../hooks/useAppSelector";
 import { Coin } from "../../store/coin";
 import Text from "../Common/Text";
+import { getDecimal } from "../../utils/coin";
 
 const Wrapper = styled.li``;
 
@@ -48,7 +49,8 @@ const ExchangeCoinItem: React.FC<ExchangeCoinItemProps> = ({ coin }) => {
         </Text>
       </CoinInfoGroup>
       <Text element="p" font="Body2Bold" color={color.Light.Shade[900]}>
-        {balance[coin].toLocaleString()} {coins[coin]["unit"]}
+        {Number.isInteger(balance[coin]) ? balance[coin].toLocaleString() : getDecimal(balance[coin]).toLocaleString()}{" "}
+        {coins[coin]["unit"]}
       </Text>
     </Wrapper>
   );
