@@ -73,9 +73,11 @@ const ExchangeInput: React.FC<ExchangeInputProps> = ({ innerLabel, name }) => {
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    // const numberRe = /^\d*[.]?\d*$/g;
-    // if (!numberRe.test(value)) return;
-    if (name === "from" || name === "to") dispatch(setInputValue({ name, value }));
+    const numberRe = /^\d*[.]?\d*$/g;
+    if (!numberRe.test(value)) return;
+    if (name === "from" || name === "to") {
+      value === "." ? dispatch(setInputValue({ name, value: `0${value}` })) : dispatch(setInputValue({ name, value }));
+    }
   };
 
   const getCanSelectCoin = useCallback(

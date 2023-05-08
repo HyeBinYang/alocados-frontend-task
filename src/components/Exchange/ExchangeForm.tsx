@@ -48,11 +48,13 @@ const ExchangeButton = styled.button`
 const ExchangeForm = () => {
   const exchangeInput = useAppSelector((state) => state.exchange.input);
   const history = useAppSelector((state) => state.exchange.history);
+  const balance = useAppSelector((state) => state.coin.balance);
   const dispatch = useAppDispatch();
 
-  const isDisabled = useMemo(() => {
-    return !exchangeInput.from.value || !exchangeInput.to.value;
-  }, [exchangeInput]);
+  const isDisabled = useMemo(
+    () => !exchangeInput.from.value || !exchangeInput.to.value || Number(exchangeInput.from.value) > balance[exchangeInput.from.name],
+    [exchangeInput]
+  );
 
   const handleExchangeClick = () => {
     dispatch(
