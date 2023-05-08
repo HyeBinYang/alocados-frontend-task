@@ -3,6 +3,7 @@ import styled from "styled-components";
 import Logo from "../Common/Icon/Logo";
 import { Link, useLocation } from "react-router-dom";
 import color from "../../const/color";
+import Text from "../Common/Text";
 
 const Wrapper = styled.header`
   display: flex;
@@ -23,10 +24,6 @@ const LinkItem = styled.li<{ active?: boolean }>`
 
   a {
     text-decoration: none;
-    color: ${({ active }) => (active ? color.Light.Primary.Font : color.Light.Shade[700])};
-    font-size: 15px;
-    font-weight: 600;
-    line-height: 36px;
   }
 `;
 
@@ -45,10 +42,18 @@ const Header = () => {
       <Logo />
       <LinkGroup>
         <LinkItem active={getIsLinkedPage("/exchange")}>
-          <Link to={"/exchange"}>환전하기</Link>
+          <Link to={"/exchange"}>
+            <Text element="span" font="ButtonBase" color={getIsLinkedPage("/exchange") ? color.Light.Primary.Font : color.Light.Shade[700]}>
+              환전하기
+            </Text>
+          </Link>
         </LinkItem>
         <LinkItem active={getIsLinkedPage("/history")}>
-          <Link to={"/history"}>거래내역</Link>
+          <Link to={"/history"}>
+            <Text element="span" font="ButtonBase" color={getIsLinkedPage("/history") ? color.Light.Primary.Font : color.Light.Shade[700]}>
+              거래내역
+            </Text>
+          </Link>
         </LinkItem>
       </LinkGroup>
     </Wrapper>

@@ -17,6 +17,11 @@ const typography = {
     font-size: 14px;
     font-weight: 700;
   `,
+  ButtonBase: css`
+    font-size: 15px;
+    line-height: 36px;
+    letter-spacing: 0.5;
+  `,
 };
 
 export default typography;
