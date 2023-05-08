@@ -10,6 +10,7 @@ import useAppDispatch from "../../hooks/useAppDispatch";
 import { useAppSelector } from "../../hooks/useAppSelector";
 import { ExchangeNameType, setInputCoinName, setInputValue } from "../../store/exchange";
 import { Coin } from "../../store/coin";
+import typography from "../../const/typography";
 
 const Wrapper = styled.div`
   height: 60px;
@@ -58,6 +59,14 @@ const CoinOptionBox = styled.div<{ disabled?: boolean }>`
   }
 `;
 
+const ExchangeResultText = styled.p`
+  padding: 10px 16px;
+  display: flex;
+  align-items: center;
+  color: ${color.Light.Primary.Font};
+  ${typography.Body2Bold};
+`;
+
 interface ExchangeInputProps {
   innerLabel: string;
   name: ExchangeNameType;
@@ -67,6 +76,8 @@ const ExchangeInput: React.FC<ExchangeInputProps> = ({ innerLabel, name }) => {
   const balance = useAppSelector((state) => state.coin.balance);
   const exchangeInput = useAppSelector((state) => state.exchange.input);
   const { name: coinName, value } = exchangeInput[name];
+  const isFinish = useAppSelector((state) => state.exchange.isFinish);
+  const history = useAppSelector((state) => state.exchange.history);
   const dispatch = useAppDispatch();
 
   const isError = useMemo(() => value === "0" || balance[coinName] < Number(value), [coinName, value]);
@@ -100,7 +111,11 @@ const ExchangeInput: React.FC<ExchangeInputProps> = ({ innerLabel, name }) => {
 
   return (
     <Wrapper>
-      <Input innerLabel={innerLabel} name={name} value={value} onChange={handleChange} error={name === "from" && isError} />
+      {name === "to" && isFinish ? (
+        <ExchangeResultText>{history[0].to.value}</ExchangeResultText>
+      ) : (
+        <Input innerLabel={innerLabel} name={name} value={value} onChange={handleChange} error={name === "from" && isError} />
+      )}
       <Dropdown>
         <Dropdown.Trigger>
           <CurrentSelectedBox>
