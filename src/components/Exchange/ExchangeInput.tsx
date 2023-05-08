@@ -8,7 +8,7 @@ import Text from "../Common/Text";
 import color from "../../const/color";
 import useAppDispatch from "../../hooks/useAppDispatch";
 import { useAppSelector } from "../../hooks/useAppSelector";
-import { ExchangeNameType, setInputCoinName, setInputValue } from "../../store/exchange";
+import { ExchangeNameType, setInputCoinName, setInputValue, setIsFinish } from "../../store/exchange";
 import { Coin } from "../../store/coin";
 import typography from "../../const/typography";
 
@@ -83,6 +83,8 @@ const ExchangeInput: React.FC<ExchangeInputProps> = ({ innerLabel, name }) => {
   const isError = useMemo(() => value === "0" || balance[coinName] < Number(value), [coinName, value]);
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    if (isFinish) dispatch(setIsFinish(false));
+
     const { name, value } = e.target;
     const numberRe = /^\d*[.]?\d*$/g;
     if (!numberRe.test(value)) return;

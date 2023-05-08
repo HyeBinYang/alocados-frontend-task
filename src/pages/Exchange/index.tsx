@@ -1,11 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import ExchangeSummary from "../../components/Exchange/ExchangeSummary";
 import ExchangeForm from "../../components/Exchange/ExchangeForm";
 import Alert from "../../components/Common/Alert";
 import { useAppSelector } from "../../hooks/useAppSelector";
 import useAppDispatch from "../../hooks/useAppDispatch";
-import { setIsFinish } from "../../store/exchange";
+import { resetHistory, setIsFinish } from "../../store/exchange";
 import typography from "../../const/typography";
 
 const Wrapper = styled.main`
@@ -31,6 +31,10 @@ const ExchangePage = () => {
   const handleCloseAlertClick = () => {
     dispatch(setIsFinish(false));
   };
+
+  useEffect(() => {
+    dispatch(resetHistory());
+  }, []);
 
   return (
     <Wrapper>

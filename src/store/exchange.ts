@@ -47,6 +47,12 @@ const exchange = createSlice({
     reverseHistory(state: ExchangeState) {
       state.history.reverse();
     },
+    resetHistory(state: ExchangeState) {
+      state.history.sort((a, b) => {
+        if (a.date && b.date) return b.date - a.date;
+        return 1;
+      });
+    },
     setInputValue(state: ExchangeState, action: PayloadAction<{ name: "from" | "to"; value: string }>) {
       const { payload } = action;
       const { name, value } = payload;
@@ -74,5 +80,5 @@ const exchange = createSlice({
   },
 });
 
-export const { addHistory, reverseHistory, setInputValue, setInputCoinName, resetInput, setIsFinish } = exchange.actions;
+export const { addHistory, reverseHistory, resetHistory, setInputValue, setInputCoinName, resetInput, setIsFinish } = exchange.actions;
 export default exchange.reducer;
